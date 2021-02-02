@@ -11,7 +11,7 @@ public class CRUD_Test {
 //        objTest.create_data(10, "Kiran", "kiran@gmail.com", "Delhi","6325413655", "Developer","360000");
 //        objTest.create_data(11, "Shabaana", "shabaana@gmail.com", "Uttar Pradesh","6325416785", "Developer","360000");
         //read data
-        objTest.read_data();
+//        objTest.read_data();
         //update data
 //        objTest.update_data(6, "Sushma", "sushma@gmail.com", "Muradabad","6325412545", "HR","400000");
         //delete data
