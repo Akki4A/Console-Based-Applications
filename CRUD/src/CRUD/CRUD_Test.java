@@ -2,20 +2,90 @@ package CRUD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Scanner;
+
 public class CRUD_Test {
     public static void main(String[] args) {
-        CRUD_Test objTest=new CRUD_Test();
-        //insert data
-//        objTest.create_data(8, "Karan", "karan@gmail.com", "Delhi","6325413655", "Developer","360000");
-//        objTest.create_data(9, "Arjun", "arjun@gmail.com", "Haryana","6325419755", "Developer","360000");
-//        objTest.create_data(10, "Kiran", "kiran@gmail.com", "Delhi","6325413655", "Developer","360000");
-//        objTest.create_data(11, "Shabaana", "shabaana@gmail.com", "Uttar Pradesh","6325416785", "Developer","360000");
-        //read data
-//        objTest.read_data();
-        //update data
-//        objTest.update_data(6, "Sushma", "sushma@gmail.com", "Muradabad","6325412545", "HR","400000");
-        //delete data
-//        objTest.delete_data(7);
+        CRUD_Test objTest = new CRUD_Test();
+        Scanner sc = new Scanner(System.in);
+        boolean condition = true;
+        while (condition==true) {
+            System.out.println("********Greetings********");
+            System.out.println();
+            System.out.println("Press 1 to insert new Employee");
+            System.out.println("Press 2 to display all Employee");
+            System.out.println("Press 3 to display one Specific Employee");
+            System.out.println("Press 4 to update existing Employee");
+            System.out.println("Press 5 to delete existing Employee");
+            System.out.println("Press 6 to exit program");
+            System.out.println();
+            try {
+                int choose = sc.nextInt();
+                //insert data
+                if (choose == 1) {
+                    System.out.println("Enter Employee's User ID :");
+                    int userID = sc.nextInt();
+                    System.out.println("Enter Name of the Employee :");
+                    String name = sc.next();
+                    System.out.println("Enter Email of the Employee :");
+                    String email = sc.next();
+                    System.out.println("Enter Address of the Employee :");
+                    String address = sc.next();
+                    System.out.println("Enter Phone Number of the Employee :");
+                    String phone = sc.next();
+                    System.out.println("Enter Designation of the Employee :");
+                    String designation = sc.next();
+                    System.out.println("Enter Salary of the Employee :");
+                    String salary = sc.next();
+                    objTest.create_data(userID, name, email, address, phone, designation, salary);
+                }
+                //read data for All Employee
+                if (choose == 2) {
+                    objTest.read_data();
+                }
+                //read data for Specific Employee
+                if (choose == 3) {
+                    System.out.println("Enter User ID :");
+                    int userID = sc.nextInt();
+                    objTest.read_data(userID);
+
+                }
+                //update data
+                if (choose == 4) {
+                    System.out.println("Enter Employee's User ID you want to change:");
+                    int userID = sc.nextInt();
+                    System.out.println("Enter Name of the Employee :");
+                    String name = sc.next();
+                    System.out.println("Enter Email of the Employee :");
+                    String email = sc.next();
+                    System.out.println("Enter Address of the Employee :");
+                    String address = sc.next();
+                    System.out.println("Enter Phone Number of the Employee :");
+                    String phone = sc.next();
+                    System.out.println("Enter Designation of the Employee :");
+                    String designation = sc.next();
+                    System.out.println("Enter Salary of the Employee :");
+                    String salary = sc.next();
+                    objTest.update_data(userID, name, email, address, phone, designation, salary);
+//                    System.out.println("Employee's Information is Updated.");
+                }
+                //delete data
+                if (choose == 5) {
+                    System.out.println("Enter Employee's User ID :");
+                    int userID = sc.nextInt();
+                    objTest.delete_data(userID);
+                }
+                //exit
+                if (choose == 6) {
+                    condition = false;
+                }
+
+            }
+            catch (Exception e){
+                System.out.println(e);
+                System.out.println("Something went wrong! Check your input");
+            }
+        }
     }
 
     public void create_data(int userID,String name,String email,String address,String phone,String designation,String salary){
@@ -36,8 +106,8 @@ public class CRUD_Test {
             ps.executeUpdate();
             System.out.println("New Employee is Inserted Into DATABASE.");
         } catch (Exception e) {
-//            System.out.println(e);
-            System.out.println("Employee Already Existed in the DATABASE!");
+            System.out.println(e);
+//            System.out.println("Employee Already Existed in the DATABASE!");
         }
     }
 
@@ -114,9 +184,8 @@ public class CRUD_Test {
             ps.setInt(7, userID);
 //            System.out.println(ps);
             ps.executeUpdate();
-            System.out.println("Employee's Information is Updated.");
         } catch (Exception e) {
-            System.out.println("Employee has Never Existed in the DATABASE!");
+//            System.out.println("Employee has Never Existed in the DATABASE!");
             System.out.println(e);
         }
     }
