@@ -3,8 +3,8 @@ import mysql.connector as connector
 class D_B_H:
     def __init__(self):
         self.con = connector.connect(host='localhost',
-                                    user='AKKI4a',
-                                    password='2019iscoming',
+                                    user='root',
+                                    password='Password',
                                     database='pythontest')
         query = 'create table if not exists user(UserID int primary key,UserName varchar(200),Phone varchar(12))' 
         cur = self.con.cursor() 
