@@ -11,7 +11,7 @@ public class DB_Connection {
         Connection connection=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/crud","root", "2019iscoming");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/crud","root", "password");
         } catch (Exception e) {
             System.out.println(e);
         }
